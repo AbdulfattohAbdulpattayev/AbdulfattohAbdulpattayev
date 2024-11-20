@@ -22,24 +22,34 @@ document.addEventListener("DOMContentLoaded", () => {
         colorChangeButton.style.color = "white";
     });
 
-    // Change word colors as you type in the terminal
-    terminal.addEventListener("input", () => {
-        const colors = ["red", "blue", "green", "orange", "purple"];
+    // Function to generate a random RGB color
+    function getRandomColor() {
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+        return `rgb(${r}, ${g}, ${b})`;
+    }
+
+    // Animate words in the terminal by changing their colors
+    function animateTerminalColors() {
         const words = terminal.innerText.split(" ");
 
         terminal.innerHTML = words
             .map(
-                (word, index) =>
-                    `<span style="color: ${colors[index % colors.length]}">${word}</span>`
+                (word) =>
+                    `<span style="color: ${getRandomColor()}">${word}</span>`
             )
             .join(" ");
 
-        // Place the cursor at the end of the text
+        // Keep the cursor at the end of the text
         const range = document.createRange();
         const sel = window.getSelection();
         range.selectNodeContents(terminal);
         range.collapse(false);
         sel.removeAllRanges();
         sel.addRange(range);
-    });
+    }
+
+    // Run the animation every second
+    setInterval(animateTerminalColors, 1000);
 });

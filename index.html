@@ -3,82 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Abdulfattoh</title>
-    <style>
-        :root {
-            --background-light: #f4f4f9;
-            --text-light: #333;
-            --background-dark: #121212;
-            --text-dark: #f4f4f9;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: var(--background-light);
-            color: var(--text-light);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2.5em;
-        }
-
-        p {
-            font-size: 1.2em;
-        }
-
-        .theme-toggle {
-            margin-top: 20px;
-        }
-
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            background-color: #007bff;
-            color: #fff;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        body.dark {
-            background-color: var(--background-dark);
-            color: var(--text-dark);
-        }
-    </style>
+    <title>Abdulfattoh's Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>About Me</h1>
-        <p><strong>Name:</strong> Abdulpattayev Abdulfattoh</p>
-        <p><strong>Hobby:</strong> Chess & Python</p>
-        <div class="theme-toggle">
-            <button id="toggleTheme">Switch to Dark Theme</button>
-        </div>
+        <header>
+            <h1>Hello, I'm Abdulfattoh Abdulpattayev</h1>
+            <p>Student, Coding Enthusiast, and Robotics Explorer</p>
+            <button id="theme-toggle">Toggle Theme</button>
+        </header>
+        <section class="terminal">
+            <textarea id="terminal" placeholder="Type anything here..."></textarea>
+        </section>
+        <footer>
+            <button id="color-change">Click Me</button>
+        </footer>
     </div>
-    <script>
-        const toggleButton = document.getElementById('toggleTheme');
-        const body = document.body;
-
-        toggleButton.addEventListener('click', () => {
-            body.classList.toggle('dark');
-            toggleButton.textContent = body.classList.contains('dark')
-                ? 'Switch to Light Theme'
-                : 'Switch to Dark Theme';
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+

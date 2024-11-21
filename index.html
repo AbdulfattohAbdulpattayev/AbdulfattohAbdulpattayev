@@ -99,7 +99,18 @@
             border-radius: 50%;
             margin: 2rem auto;
             object-fit: cover;
+            animation: a linear 1s infinite;
+            
         }
+        @keyframes a{
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        
     </style>
 </head>
 <body>
@@ -140,7 +151,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 Abdulfattoh Abdulpattayev. All rights reserved.</p>
+        <p>Abdulfattoh Abdulpattayev (2024)</p>
     </footer>
 
     <script>

@@ -3,23 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulfattoh's Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Abdulfattoh Abdulpattayev - Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --header-bg: #f0f0f0;
+            --link-color: #0066cc;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #333333;
+            --text-color: #ffffff;
+            --header-bg: #222222;
+            --link-color: #66b3ff;
+        }
+
+        [data-theme="monokai"] {
+            --bg-color: #272822;
+            --text-color: #f8f8f2;
+            --header-bg: #3e3d32;
+            --link-color: #a6e22e;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 0.5rem;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 2rem;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .theme-switcher button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            margin-left: 0.5rem;
+            color: var(--text-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--header-bg);
+        }
+
+        .profile-image {
+            display: block;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Hello, I'm Abdulfattoh Abdulpattayev</h1>
-            <p>Student, Coding Enthusiast, and Robotics Explorer</p>
-            <button id="theme-toggle">Toggle Theme</button>
-        </header>
-        <section class="terminal">
-            <div id="terminal" contenteditable="true" class="editable" spellcheck="false"></div>
+    <header>
+        <h1>Abdulfattoh Abdulpattayev</h1>
+        <div class="theme-switcher">
+            <button onclick="setTheme('light')">☀️</button>
+            <button onclick="setTheme('dark')">🌙</button>
+            <button onclick="setTheme('monokai')">💻</button>
+        </div>
+    </header>
+
+    <main>
+        <section>
+            <h2>About Me</h2>
+            <img src="https://via.placeholder.com/200" alt="Abdulfattoh Abdulpattayev" class="profile-image">
+            <p>Born in 2011, I'm a young enthusiast passionate about chess, coding, and robotics. I'm always eager to learn and help others with their projects.</p>
         </section>
-        <footer>
-            <button id="color-change">Click Me</button>
-        </footer>
-    </div>
-    <script src="script.js"></script>
+
+        <section>
+            <h2>Interests</h2>
+            <ul>
+                <li>Chess</li>
+                <li>Coding</li>
+                <li>Python</li>
+                <li>Robocoding</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Contact</h2>
+            <p>
+                <a href="https://t.me/puregenius1203" target="_blank" rel="noopener noreferrer">
+                    📧 t.me/puregenius1203
+                </a>
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Abdulfattoh Abdulpattayev. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        }
+    </script>
 </body>
 </html>

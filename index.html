@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -99,18 +99,30 @@
             border-radius: 50%;
             margin: 2rem auto;
             object-fit: cover;
-            animation: a linear 5s infinite;
-            
+            animation: spin linear 5s infinite;
         }
-        @keyframes a{
-            0%{
+
+        @keyframes spin {
+            0% {
                 transform: rotate(0deg);
             }
-            100%{
+            100% {
                 transform: rotate(360deg);
             }
         }
-        
+
+        .pause-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 0.5rem 1rem;
+            background-color: var(--header-bg);
+            border: none;
+            cursor: pointer;
+            color: var(--text-color);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -123,10 +135,13 @@
         </div>
     </header>
 
+    <!-- Pause button -->
+    <button class="pause-btn" onclick="toggleAnimation()">Pause</button>
+
     <main>
         <section>
             <h2>About Me</h2>
-            <img src="https://ih1.redbubble.net/image.1003690801.6818/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg" alt="Abdulfattoh Abdulpattayev" class="profile-image">
+            <img src="https://ih1.redbubble.net/image.1003690801.6818/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg" alt="Abdulfattoh Abdulpattayev" class="profile-image" id="frogImage">
             <p>Born in 2011, I'm a young enthusiast passionate about chess, coding, and robotics. I'm always eager to learn and help others with their projects.</p>
         </section>
 
@@ -163,6 +178,24 @@
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             setTheme(savedTheme);
+        }
+
+        // Toggle animation on the frog image
+        let isPaused = false;
+
+        function toggleAnimation() {
+            const frogImage = document.getElementById('frogImage');
+            const pauseButton = document.querySelector('.pause-btn');
+
+            if (isPaused) {
+                frogImage.style.animationPlayState = 'running';
+                pauseButton.textContent = 'Pause';
+            } else {
+                frogImage.style.animationPlayState = 'paused';
+                pauseButton.textContent = 'Play';
+            }
+
+            isPaused = !isPaused;
         }
     </script>
 </body>

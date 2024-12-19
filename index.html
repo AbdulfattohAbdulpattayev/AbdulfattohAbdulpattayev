@@ -1,202 +1,138 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulfattoh Abdulpattayev - Portfolio</title>
+    <title>Portfolio Website</title>
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-color: #333333;
-            --header-bg: #f0f0f0;
-            --link-color: #0066cc;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #333333;
-            --text-color: #ffffff;
-            --header-bg: #222222;
-            --link-color: #66b3ff;
-        }
-
-        [data-theme="monokai"] {
-            --bg-color: #272822;
-            --text-color: #f8f8f2;
-            --header-bg: #3e3d32;
-            --link-color: #a6e22e;
+            --bg-color-light: #ffffff;
+            --text-color-light: #000000;
+            --bg-color-dark: #121212;
+            --text-color-dark: #ffffff;
+            --bg-color-monokai: #272822;
+            --text-color-monokai: #f8f8f2;
+            --button-color: #007acc;
+            --button-hover: #005f99;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
             margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color-light);
+            color: var(--text-color-light);
             transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background-color: var(--header-bg);
-            padding: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        section {
-            margin-bottom: 2rem;
-        }
-
-        h2 {
-            border-bottom: 2px solid var(--text-color);
-            padding-bottom: 0.5rem;
-        }
-
-        ul {
-            list-style-type: disc;
-            padding-left: 2rem;
-        }
-
-        a {
-            color: var(--link-color);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .theme-switcher button {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            margin-left: 0.5rem;
-            color: var(--text-color);
-        }
-
-        footer {
+            padding: 20px;
             text-align: center;
-            padding: 1rem;
-            background-color: var(--header-bg);
+            background: var(--button-color);
+            color: white;
         }
 
-        .profile-image {
-            display: block;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 2rem auto;
-            object-fit: cover;
-            animation: spin linear 5s infinite;
+        .theme-toggle {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .pause-btn {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            padding: 0.5rem 1rem;
-            background-color: var(--header-bg);
+        .theme-toggle button {
+            margin: 0 10px;
+            padding: 10px 20px;
             border: none;
             cursor: pointer;
-            color: var(--text-color);
+            font-size: 16px;
             border-radius: 5px;
-            font-size: 1rem;
+            background: var(--button-color);
+            color: white;
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        .theme-toggle button:hover {
+            background: var(--button-hover);
+        }
+
+        .theme-toggle button:active {
+            transform: scale(0.95);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-link {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .profile-link a {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+            background: var(--button-color);
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.1s;
+        }
+
+        .profile-link a:hover {
+            background: var(--button-hover);
+        }
+
+        .profile-link a:active {
+            transform: scale(0.95);
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Abdulfattoh Abdulpattayev</h1>
-        <div class="theme-switcher">
-            <button onclick="setTheme('light')">☀️</button>
-            <button onclick="setTheme('dark')">🌙</button>
-            <button onclick="setTheme('monokai')">💻</button>
-        </div>
+        <h1>My Portfolio</h1>
     </header>
 
-    <!-- Pause button -->
-    <button class="pause-btn" onclick="toggleAnimation()">Pause</button>
+    <div class="theme-toggle">
+        <button onclick="setTheme('light')">Light Theme</button>
+        <button onclick="setTheme('dark')">Dark Theme</button>
+        <button onclick="setTheme('monokai')">Monokai Theme</button>
+    </div>
 
-    <main>
-        <section>
-            <h2>About Me</h2>
-            <img src="https://ih1.redbubble.net/image.1003690801.6818/bg,f8f8f8-flat,750x,075,f-pad,750x1000,f8f8f8.jpg" alt="Abdulfattoh Abdulpattayev" class="profile-image" id="frogImage">
-            <p>Born in 2011, I'm a young enthusiast passionate about chess, coding, and robotics. I'm always eager to learn and help others with their projects.</p>
-        </section>
+    <div class="profile-link">
+        <a href="https://robocontest.uz/profile/abdu_12004" target="_blank">My RoboContest Profile</a>
+    </div>
 
-        <section>
-            <h2>Interests</h2>
-            <ul>
-                <li>Chess</li>
-                <li>Coding</li>
-                <li>Python</li>
-                <li>Robocoding</li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Contact</h2>
-            <p>
-                <a href="https://t.me/puregenius1203" target="_blank" rel="noopener noreferrer">
-                    📧 t.me/puregenius1203
-                </a>
-            </p>
-        </section>
-    </main>
-
-    <footer>
-        <p>Abdulfattoh Abdulpattayev (2024)</p>
-    </footer>
+    <section class="gallery">
+        <img src="https://via.placeholder.com/300" alt="Project 1">
+        <img src="https://via.placeholder.com/300" alt="Project 2">
+        <img src="https://via.placeholder.com/300" alt="Project 3">
+        <img src="https://via.placeholder.com/300" alt="Project 4">
+    </section>
 
     <script>
         function setTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('theme', theme);
-        }
-
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            setTheme(savedTheme);
-        }
-
-        // Toggle animation on the frog image
-        let isPaused = false;
-
-        function toggleAnimation() {
-            const frogImage = document.getElementById('frogImage');
-            const pauseButton = document.querySelector('.pause-btn');
-
-            if (isPaused) {
-                frogImage.style.animationPlayState = 'running';
-                pauseButton.textContent = 'Pause';
-            } else {
-                frogImage.style.animationPlayState = 'paused';
-                pauseButton.textContent = 'Play';
+            if (theme === 'light') {
+                document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-color-light');
+                document.body.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-color-light');
+            } else if (theme === 'dark') {
+                document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-color-dark');
+                document.body.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-color-dark');
+            } else if (theme === 'monokai') {
+                document.body.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-color-monokai');
+                document.body.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-color-monokai');
             }
-
-            isPaused = !isPaused;
         }
     </script>
 </body>
 </html>
+
